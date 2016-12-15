@@ -4,7 +4,7 @@ namespace CoI\ModelTest\Duck;
 use CoI\Model\Duck\Duck;
 use CoI\Model\Duck\RubberDuck;
 use CoI\Model\Duck\Quack\Squeak;
-use CoI\Model\Duck\Fly\FlyWithWings;
+use CoI\Model\Duck\Fly\CannotFly;
 
 class RubberDuckTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class RubberDuckTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->flyable = new FlyWithWings();
+        $this->flyable = new CannotFly();
 
         $this->quackable = new Squeak();
     }
@@ -31,6 +31,15 @@ class RubberDuckTest extends \PHPUnit_Framework_TestCase
         self::assertInstanceOf(RubberDuck::class, $duck);
     }
 
+    /**
+     * @test
+     */
+    public function itCanFly()
+    {
+        $duck = new RubberDuck($this->flyable, $this->quackable);
+
+        self::assertEquals("I can't fly!", $duck->fly());
+    }
 
     /**
      * @test
