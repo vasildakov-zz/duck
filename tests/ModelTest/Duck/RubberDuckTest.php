@@ -3,7 +3,7 @@ namespace CoI\ModelTest\Duck;
 
 use CoI\Model\Duck\Duck;
 use CoI\Model\Duck\RubberDuck;
-use CoI\Model\Duck\Quack\Quack;
+use CoI\Model\Duck\Quack\Squeak;
 use CoI\Model\Duck\Fly\FlyWithWings;
 
 class RubberDuckTest extends \PHPUnit_Framework_TestCase
@@ -16,7 +16,7 @@ class RubberDuckTest extends \PHPUnit_Framework_TestCase
     {
         $this->flyable = new FlyWithWings();
 
-        $this->quackable = new Quack();
+        $this->quackable = new Squeak();
     }
 
     /**
@@ -27,8 +27,10 @@ class RubberDuckTest extends \PHPUnit_Framework_TestCase
         $duck = new RubberDuck($this->flyable, $this->quackable);
 
         self::assertTrue(is_subclass_of($duck, Duck::class));
+
         self::assertInstanceOf(RubberDuck::class, $duck);
     }
+
 
     /**
      * @test
@@ -37,7 +39,7 @@ class RubberDuckTest extends \PHPUnit_Framework_TestCase
     {
         $duck = new RubberDuck($this->flyable, $this->quackable);
 
-        self::assertEquals("quack", $duck->quack());
+        self::assertEquals("Squeak", $duck->quack());
     }
 
 
