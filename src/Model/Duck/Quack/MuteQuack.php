@@ -18,7 +18,7 @@ namespace CoI\Model\Duck\Quack;
  * @package Model
  * @author Vasil Dakov <vasildakov@gmail.com>
  */
-class MuteQuack implements Quackable
+final class MuteQuack implements Quackable
 {
     public function quack()
     {
